@@ -3,13 +3,12 @@ import { Metadata } from 'next'
 import Home from "@/components/Home"
 import Services from '@/components/Services'
 import OurWork from '@/components/OurWork'
-import OurCourses from '@/components/OurCourses'
 import Contact from '@/components/Contact'
 import Achievements from '@/components/Achievements'
 
 // Metadata for SEO
 export const metadata = {
-  title: '3D Studio | Professional 3D Models, Environments & Product Renders',
+  title: 'MotionDev | Professional 3D Models, Environments & Product Renders',
   description: 'We create stunning 3D models, environments, and product renders for studios, brands, and agencies. From concept to final render — we bring your vision to reality.',
   keywords: [
     '3D modeling',
@@ -22,7 +21,6 @@ export const metadata = {
     'environment design',
     'texturing',
     'LookDev',
-    '3D courses',
     'professional 3D services'
   ],
   authors: [{ name: 'Your Studio Name' }],
@@ -34,15 +32,15 @@ export const metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://yourdomain.com',
-    title: '3D Studio | Professional 3D Models & Product Renders',
+    title: 'MotionDEv | Professional 3D Models & Product Renders',
     description: 'We create stunning 3D models, environments, and product renders for studios, brands, and agencies.',
-    siteName: 'Your Studio Name',
+    siteName: 'MotionDev',
     images: [
       {
-        url: 'https://yourdomain.com/og-image.jpg',
+        url: '/Header.png',
         width: 1200,
         height: 630,
-        alt: '3D Studio Portfolio',
+        alt: 'MotionDev Portfolio',
       },
     ],
   },
@@ -50,7 +48,7 @@ export const metadata = {
   // Twitter Card
   twitter: {
     card: 'summary_large_image',
-    title: '3D Studio | Professional 3D Models & Product Renders',
+    title: 'MotionDEV | Professional 3D Models & Product Renders',
     description: 'We create stunning 3D models, environments, and product renders for studios, brands, and agencies.',
     images: ['https://yourdomain.com/twitter-image.jpg'],
     creator: '@yourtwitterhandle',

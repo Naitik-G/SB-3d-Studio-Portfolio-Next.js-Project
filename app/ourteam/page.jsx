@@ -46,12 +46,7 @@ export default function TeamPage() {
       description: "Provides excellent support and assistance to customers with course-related inquiries.",
       color: "from-orange-700 to-orange-900"
     },
-    {
-      name: "Emily Smith",
-      role: "GRAPHIC DESIGNER",
-      description: "Creates visually appealing graphics and visual elements for course materials.",
-      color: "from-gray-600 to-gray-800"
-    }
+   
   ];
 
   return (

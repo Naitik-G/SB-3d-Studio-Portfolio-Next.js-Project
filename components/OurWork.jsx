@@ -1,41 +1,100 @@
 "use client";
 
-import { Code, Video, Users, Grid3x3, Palette, TrendingUp } from "lucide-react";
+import { useState, useRef } from "react";
+import { Code, Video, Users, Grid3x3, Palette, TrendingUp, X, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import Image from "next/image";
+import render1 from "@/app/assest/render1.jpg";
+import render2 from "@/app/assest/render2.jpg";
+import render3 from "@/app/assest/render3.jpg";
+import render4 from "@/app/assest/render4.jpg";
+import render5 from "@/app/assest/render5.jpg";
+import render6 from "@/app/assest/render6.jpg";
+import TeamMember1 from "@/app/assest/TeamMember1.jpg";
+import TeamMember2 from "@/app/assest/TeamMember2.jpg";
+import TeamMember3 from "@/app/assest/TeamMember3.jpg";
+import TeamMember4 from "@/app/assest/TeamMember4.jpg";
+import TeamMember5 from "@/app/assest/TeamMember5.jpg";
 
 export default function OurWork() {
+  const [selectedService, setSelectedService] = useState(null);
+  const [mutedVideos, setMutedVideos] = useState({});
+  const videoRefs = useRef([]);
+
+  const defaultImages = [render1, render2, render3, render4, render5, render6];
+  const teamImages = [TeamMember1, TeamMember2, TeamMember3, TeamMember4, TeamMember5, render1];
+  const motionVideos = [
+    "/motion1.mp4",
+    "/motion2.mp4",
+    "/motion3.mp4",
+    "/motion4.mp4",
+    "/motion5.mp4",
+    "/motion6.mp4"
+  ];
+
   const services = [
     {
       icon: <Code className="w-8 h-8" />,
       title: "Environment Design",
-      description: "Immersive 3D environments and level-ready scenes with cinematic lighting and mood."
+      description: "Immersive 3D environments and level-ready scenes with cinematic lighting and mood.",
+      images: defaultImages,
+      type: "image"
     },
     {
       icon: <Video className="w-8 h-8" />,
       title: "3D Product Visualization",
-      description: "High-quality product renders and animations for ads, packaging, and eCommerce."
+      description: "High-quality product renders and animations for ads, packaging, and eCommerce.",
+      images: defaultImages,
+      type: "image"
     },
     {
       icon: <Grid3x3 className="w-8 h-8" />,
       title: "Game Props & Assets",
-      description: "Optimized 3D props and assets crafted for game engines with perfect topology and PBR materials."
+      description: "Optimized 3D props and assets crafted for game engines with perfect topology and PBR materials.",
+      images: teamImages,
+      type: "image"
     },
     {
       icon: <Video className="w-8 h-8" />,
       title: "3D Animation & Motion",
-      description: "Bring your models to life with smooth, expressive animation and dynamic motion renders."
+      description: "Bring your models to life with smooth, expressive animation and dynamic motion renders.",
+      images: motionVideos,
+      type: "video"
     },
     {
       icon: <Users className="w-8 h-8" />,
       title: "Character & Creature Modeling",
-      description: "Stylized or realistic 3D characters, ready for animation and rigging."
+      description: "Stylized or realistic 3D characters, ready for animation and rigging.",
+      images: defaultImages,
+      type: "image"
     },
     {
       icon: <Palette className="w-8 h-8" />,
       title: "Texturing & LookDev",
-      description: "Physically accurate materials and stylized surfaces using Substance Painter and designer."
+      description: "Physically accurate materials and stylized surfaces using Substance Painter and designer.",
+      images: defaultImages,
+      type: "image"
     }
   ];
+
+  const handleVideoHover = (index, isHovering) => {
+    const videoRef = videoRefs.current[index];
+    if (videoRef) {
+      if (isHovering) {
+        videoRef.play();
+      } else {
+        videoRef.pause();
+      }
+    }
+  };
+
+  const toggleMute = (index) => {
+    setMutedVideos(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
 
   return (
     <div className="min-h-screen bg-black py-20 px-4">
@@ -50,9 +109,6 @@ export default function OurWork() {
             {/* Left Side - Browse Section */}
             <div className="lg:w-1/3">
               <div className="sticky top-8">
-                {/* Menu Icon */}
-             
-
                 {/* Title */}
                 <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
                   Browse Our Work Category
@@ -64,9 +120,11 @@ export default function OurWork() {
                 </p>
 
                 {/* CTA Button */}
-                <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-6 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50">
-                  Browse All Categories →
-                </Button>
+                <Link href="/category">
+                  <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-6 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50">
+                    Browse All Categories →
+                  </Button>
+                </Link>
               </div>
             </div>
 
@@ -76,6 +134,7 @@ export default function OurWork() {
                 {services.map((service, index) => (
                   <div
                     key={index}
+                    onClick={() => setSelectedService(service)}
                     className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-2xl p-8 hover:border-green-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10 group cursor-pointer"
                   >
                     {/* Icon */}
@@ -99,6 +158,99 @@ export default function OurWork() {
           </div>
         </div>
       </div>
+
+      {/* Modal Popup */}
+      {selectedService && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          onClick={() => setSelectedService(null)}
+        >
+          <div 
+            className="relative bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-2xl w-full max-w-4xl max-h-[95vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedService(null)}
+              className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/80 rounded-full transition-colors"
+            >
+              <X className="w-6 h-6 text-white" />
+            </button>
+
+            {/* Modal Content */}
+            <div className="p-8">
+              {/* Service Header */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="text-green-400">
+                  {selectedService.icon}
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-white">
+                    {selectedService.title}
+                  </h2>
+                  <p className="text-gray-400 mt-1">
+                    {selectedService.description}
+                  </p>
+                </div>
+              </div>
+
+              {/* Media Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {selectedService.images.map((media, index) => {
+                  const isMuted = mutedVideos[index] !== false;
+                  
+                  return (
+                    <div
+                      key={index}
+                      className="relative aspect-square rounded-lg overflow-hidden bg-gray-800 hover:scale-105 transition-transform duration-300 group"
+                      onMouseEnter={() => selectedService.type === "video" && handleVideoHover(index, true)}
+                      onMouseLeave={() => selectedService.type === "video" && handleVideoHover(index, false)}
+                    >
+                      {selectedService.type === "video" ? (
+                        <>
+                          <video
+                            ref={(el) => videoRefs.current[index] = el}
+                            src={media}
+                            className="w-full h-full object-cover"
+                            loop
+                            muted={isMuted}
+                            playsInline
+                            preload="metadata"
+                            onError={(e) => console.error('Video error:', media, e)}
+                          >
+                            Your browser does not support the video tag.
+                          </video>
+                          {/* Mute/Unmute Button */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleMute(index);
+                            }}
+                            className="absolute bottom-3 right-3 p-2 bg-black/70 hover:bg-black/90 rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100 z-10"
+                          >
+                            {isMuted ? (
+                              <VolumeX className="w-4 h-4 text-white" />
+                            ) : (
+                              <Volume2 className="w-4 h-4 text-green-400" />
+                            )}
+                          </button>
+                        </>
+                      ) : (
+                        <Image
+                          src={media}
+                          alt={`${selectedService.title} - Image ${index + 1}`}
+                          fill
+                          className="object-cover"
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

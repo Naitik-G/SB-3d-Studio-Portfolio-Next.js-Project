@@ -131,10 +131,6 @@ export default function AboutPage() {
               ))}
             </div>
 
-            {/* CTA Button */}
-            <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50">
-              More About Us →
-            </Button>
           </div>
         </div>
       </div>

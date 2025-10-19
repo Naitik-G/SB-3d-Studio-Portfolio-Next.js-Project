@@ -1,21 +1,58 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Globe } from "lucide-react";
+import Link from "next/link";
 
 export default function AchievementsSection() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const stats = [
     { value: "15+", label: "Happy clients" },
     { value: "20+", label: "Advanced Services" },
     { value: "8", label: "Pro Workers" },
-    { value: "4.5", label: "Customer Rating" }
+    { value: "4.5", label: "Customer Rating" },
   ];
+
+  // Generate static positions for dots (no random)
+  const generateDotPositions = (count) => {
+    return Array.from({ length: count }, (_, i) => ({
+      top: ((i * 7919) % 100),
+      left: ((i * 3571) % 100),
+      opacity: ((i * 13) % 50) / 100,
+    }));
+  };
+
+  const generateCircleDots = (count) => {
+    return Array.from({ length: count }, (_, i) => {
+      const angle = (i / count) * Math.PI * 2;
+      const radiusVariation = ((i * 17) % 40);
+      const radius = 180 + radiusVariation;
+      const x = Math.cos(angle) * radius;
+      const y = Math.sin(angle) * radius;
+
+      return {
+        x,
+        y,
+        animationDelay: i * 0.1,
+        opacity: 0.3 + ((i * 7) % 40) / 100,
+      };
+    });
+  };
+
+  const dotPositions = generateDotPositions(200);
+  const circleDots = generateCircleDots(50);
 
   return (
     <div className="relative min-h-screen bg-black py-20 px-4 overflow-hidden">
       {/* Background Globe */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-10">
-        <div className="relative w-full h-full animate-spin-slow"> {/* <<< ADDED ANIMATION HERE */}
+        <div className="relative w-full h-full animate-spin-slow">
           {/* Dotted Globe Effect (Concentric Circles) */}
           <div className="absolute inset-0">
             {[...Array(15)].map((_, i) => (
@@ -25,23 +62,23 @@ export default function AchievementsSection() {
                 style={{
                   width: `${100 + i * 30}px`,
                   height: `${100 + i * 30}px`,
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
                 }}
               />
             ))}
           </div>
           {/* Dots pattern */}
           <div className="absolute inset-0 opacity-40">
-            {[...Array(200)].map((_, i) => (
+            {dotPositions.map((pos, i) => (
               <div
                 key={i}
                 className="absolute w-1 h-1 bg-green-500 rounded-full"
                 style={{
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                  opacity: Math.random() * 0.5,
+                  top: `${pos.top}%`,
+                  left: `${pos.left}%`,
+                  opacity: pos.opacity,
                 }}
               />
             ))}
@@ -67,7 +104,8 @@ export default function AchievementsSection() {
 
             {/* Description */}
             <p className="text-gray-400 text-lg mb-12 leading-relaxed">
-              We've achieved a lot over the past year helping clients across the Globe.
+              We've achieved a lot over the past year helping clients across the
+              Globe.
             </p>
 
             {/* Stats Grid */}
@@ -77,22 +115,22 @@ export default function AchievementsSection() {
                   <div className="text-4xl lg:text-5xl font-bold text-green-400 mb-2">
                     {stat.value}
                   </div>
-                  <div className="text-gray-400 text-sm">
-                    {stat.label}
-                  </div>
+                  <div className="text-gray-400 text-sm">{stat.label}</div>
                 </div>
               ))}
             </div>
 
             {/* CTA Button */}
-            <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50">
-              More About Us →
-            </Button>
+            <Link href="/about">
+              <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-6 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50">
+                More About Us →
+              </Button>
+            </Link>
           </div>
 
           {/* Right Content - Globe Visual */}
           <div className="relative hidden lg:block">
-            <div className="relative w-full h-[500px] animate-spin-slow"> {/* <<< ADDED ANIMATION HERE AS WELL */}
+            <div className="relative w-full h-[500px] animate-spin-slow">
               {/* Large decorative circle */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-96 h-96 rounded-full border border-gray-800" />
@@ -105,28 +143,20 @@ export default function AchievementsSection() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-64 h-64 rounded-full bg-gradient-to-br from-gray-900 to-black border border-gray-800" />
               </div>
-              
               {/* Animated dots around circles */}
               <div className="absolute inset-0">
-                {[...Array(50)].map((_, i) => {
-                  const angle = (i / 50) * Math.PI * 2;
-                  const radius = 180 + Math.random() * 40;
-                  const x = Math.cos(angle) * radius;
-                  const y = Math.sin(angle) * radius;
-                  
-                  return (
-                    <div
-                      key={i}
-                      className="absolute w-1 h-1 bg-green-500 rounded-full animate-pulse"
-                      style={{
-                        left: `calc(50% + ${x}px)`,
-                        top: `calc(50% + ${y}px)`,
-                        animationDelay: `${i * 0.1}s`,
-                        opacity: 0.3 + Math.random() * 0.4,
-                      }}
-                    />
-                  );
-                })}
+                {circleDots.map((dot, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-1 h-1 bg-green-500 rounded-full animate-pulse"
+                    style={{
+                      left: `calc(50% + ${dot.x}px)`,
+                      top: `calc(50% + ${dot.y}px)`,
+                      animationDelay: `${dot.animationDelay}s`,
+                      opacity: dot.opacity,
+                    }}
+                  />
+                ))}
               </div>
             </div>
           </div>

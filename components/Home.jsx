@@ -2,12 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Profile1 from "../app/assest/Profile1.jpg";
-import Profile2 from "../app/assest/Profile2.jpg";
-import Profile3 from "../app/assest/Profile3.jpg";
-import Profile4 from "../app/assest/Profile4.jpg";
-import Profile5 from "../app/assest/Profile5.jpg";
-import Profile6 from "../app/assest/Profile6.jpg";
+import render1 from "@/app/assest/render1.jpg";
+import render2 from "@/app/assest/render2.jpg";
+import render3 from "@/app/assest/render3.jpg";
+import render4 from "@/app/assest/render4.jpg";
+import render5 from "@/app/assest/render5.jpg";
+import render6 from "@/app/assest/render6.jpg";
+import render7 from "@/app/assest/render7.jpg";
+import render8 from "@/app/assest/render8.jpg";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -89,8 +91,8 @@ export default function AutoScrollGallery() {
     }
   }, [isMobile]);
 
-  const leftImages = [Profile1, Profile2, Profile3];
-  const rightImages = [Profile4, Profile5, Profile6];
+  const leftImages = [render1, render6, render3, render8];
+  const rightImages = [render5, render2, render7, render4];
 
   return (
     <div className="flex flex-col lg:flex-row min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
@@ -132,15 +134,15 @@ export default function AutoScrollGallery() {
           {/* Stats */}
           <div className="flex gap-8 pt-8">
             <div>
-              <div className="text-3xl font-bold text-white">500+</div>
+              <div className="text-3xl font-bold text-white">30+</div>
               <div className="text-sm text-gray-400">Projects Done</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-white">50+</div>
+              <div className="text-3xl font-bold text-white">15+</div>
               <div className="text-sm text-gray-400">Happy Clients</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-white">10+</div>
+              <div className="text-3xl font-bold text-white">1+</div>
               <div className="text-sm text-gray-400">Years Experience</div>
             </div>
           </div>
