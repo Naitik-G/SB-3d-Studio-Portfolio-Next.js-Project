@@ -1,15 +1,16 @@
 import React from 'react'
-import { Metadata } from 'next'
 import Home from "@/components/Home"
 import Services from '@/components/Services'
 import OurWork from '@/components/OurWork'
-import Contact from '@/components/Contact'
 import Achievements from '@/components/Achievements'
 
 // Metadata for SEO
 export const metadata = {
+  metadataBase: new URL('https://www.motiondev.xyz'),
+  
   title: 'MotionDev | Professional 3D Models, Environments & Product Renders',
   description: 'We create stunning 3D models, environments, and product renders for studios, brands, and agencies. From concept to final render — we bring your vision to reality.',
+  
   keywords: [
     '3D modeling',
     '3D studio',
@@ -21,18 +22,21 @@ export const metadata = {
     'environment design',
     'texturing',
     'LookDev',
-    'professional 3D services'
+    'professional 3D services',
+    'MotionDev',
+    '3D design services'
   ],
-  authors: [{ name: 'Your Studio Name' }],
-  creator: 'Your Studio Name',
-  publisher: 'Your Studio Name',
+  
+  authors: [{ name: 'MotionDev' }],
+  creator: 'MotionDev',
+  publisher: 'MotionDev',
   
   // Open Graph
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://yourdomain.com',
-    title: 'MotionDEv | Professional 3D Models & Product Renders',
+    url: 'https://www.motiondev.xyz',
+    title: 'MotionDev | Professional 3D Models & Product Renders',
     description: 'We create stunning 3D models, environments, and product renders for studios, brands, and agencies.',
     siteName: 'MotionDev',
     images: [
@@ -40,7 +44,8 @@ export const metadata = {
         url: '/Header.png',
         width: 1200,
         height: 630,
-        alt: 'MotionDev Portfolio',
+        alt: 'MotionDev - Professional 3D Studio Portfolio',
+        type: 'image/png',
       },
     ],
   },
@@ -48,10 +53,11 @@ export const metadata = {
   // Twitter Card
   twitter: {
     card: 'summary_large_image',
-    title: 'MotionDEV | Professional 3D Models & Product Renders',
+    site: '@motion_dev23733',
+    creator: '@motion_dev23733',
+    title: 'MotionDev | Professional 3D Models & Product Renders',
     description: 'We create stunning 3D models, environments, and product renders for studios, brands, and agencies.',
-    images: ['https://yourdomain.com/twitter-image.jpg'],
-    creator: '@yourtwitterhandle',
+    images: ['z/Header.png'],
   },
   
   // Additional meta tags
@@ -67,16 +73,9 @@ export const metadata = {
     },
   },
   
-  // Verification
-  verification: {
-    google: 'your-google-verification-code',
-    // yandex: 'your-yandex-verification-code',
-    // bing: 'your-bing-verification-code',
-  },
-  
   // Icons
   icons: {
-    icon: '/favicon.ico',
+    icon: '/logo.svg',
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png',
   },
@@ -84,17 +83,22 @@ export const metadata = {
   // Manifest
   manifest: '/site.webmanifest',
   
-  // Alternate languages (if applicable)
+  // Canonical URL
   alternates: {
-    canonical: 'https://yourdomain.com',
-    languages: {
-      'en-US': 'https://yourdomain.com',
-      // 'es-ES': 'https://yourdomain.com/es',
-    },
+    canonical: 'https://www.motiondev.xyz',
   },
   
   // Other meta tags
   category: '3D Design & Visualization',
+  
+  // Additional metadata
+  applicationName: 'MotionDev',
+  referrer: 'origin-when-cross-origin',
+  formatDetection: {
+    email: "devmotion007@gmail.com",
+    address: false,
+    telephone: "+91 9518535585",
+  },
 }
 
 export default function page() {
@@ -104,7 +108,6 @@ export default function page() {
       <Services />
       <OurWork />
       <Achievements />
-      <Contact />
     </>
   )
 }

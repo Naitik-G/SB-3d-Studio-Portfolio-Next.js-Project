@@ -1,11 +1,10 @@
-// app/robots.js
 export default function robots() {
   return {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/private/',
+      disallow: ['/api/', '/admin/'],
     },
-    sitemap: 'https://yourdomain.com/sitemap.xml',
+    sitemap: 'https://www.motiondev.xyz/sitemap.xml',
   }
 }

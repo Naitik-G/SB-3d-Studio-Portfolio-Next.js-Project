@@ -31,7 +31,7 @@ export default function Header() {
   }, [isMenuOpen]);
 
   const navItems = [
-    { name: "OurTeam", href: "/ourteam" },
+    { name: "Home", href: "/" },
     { name: "FAQ", href: "/faq" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
@@ -53,11 +53,11 @@ export default function Header() {
             : "bg-transparent"
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group z-50">
-              <div className="relative w-12 h-12 sm:w-16 sm:h-16 transition-transform duration-300 group-hover:scale-110">
+              <div className="relative w-18 h-18 sm:w-16 sm:h-16 transition-transform duration-300 group-hover:scale-110">
                 <Image
                   src="/logo.svg"
                   alt="Studio Logo"
@@ -66,30 +66,31 @@ export default function Header() {
                   priority
                 />
               </div>
-              <span className="text-white font-bold text-lg sm:text-xl hidden xs:block">
-                MotionDev
-              </span>
-            </Link>
+               <span className="text-white font-bold text-xl hidden sm:block">
+              MotionDev
+            </span>
+          </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1">
-              {navItems.map((item) => {
-                const active = isActive(item.href);
-                return (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative ${
-                      active
-                        ? "text-white bg-green-500/20 border border-green-500/50"
-                        : "text-gray-300 hover:text-white hover:bg-gray-800/50"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                );
-              })}
-            </div>
+          <div className="hidden lg:flex items-center space-x-1">
+            {navItems.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative ${
+                    active
+                      ? "text-white bg-green-500/20 border border-green-500/50"
+                      : "text-gray-300 hover:text-white hover:bg-gray-800/50"
+                  }`}
+                >
+                  {item.name}
+                 
+                </Link>
+              );
+            })}
+          </div>
 
             {/* Mobile Menu Button */}
             <button
@@ -131,7 +132,7 @@ export default function Header() {
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className={`text-xl sm:text-2xl font-semibold transition-all duration-300 transform relative ${
+                className={`text-3xl sm:text-3xl font-semibold transition-all duration-300 transform relative ${
                   isMenuOpen
                     ? "translate-y-0 opacity-100"
                     : "translate-y-4 opacity-0"

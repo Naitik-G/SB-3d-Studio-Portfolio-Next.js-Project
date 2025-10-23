@@ -5,11 +5,13 @@ import Image from "next/image";
 import render1 from "@/app/assest/render1.jpg";
 import render2 from "@/app/assest/render2.jpg";
 import render3 from "@/app/assest/render3.jpg";
-import render4 from "@/app/assest/render4.jpg";
-import render5 from "@/app/assest/render5.jpg";
-import render6 from "@/app/assest/render6.jpg";
-import render7 from "@/app/assest/render7.jpg";
-import render8 from "@/app/assest/render8.jpg";
+import Product2 from "@/app/assest/Product2.jpg";
+import Product3 from "@/app/assest/Product3.jpg";
+import GameAssest2 from "@/app/assest/GameAssest2.jpg";
+import GameAssest3 from "@/app/assest/GameAssest3.jpg";
+import GameAssest4 from "@/app/assest/GameAssest4.jpg";
+
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -91,8 +93,8 @@ export default function AutoScrollGallery() {
     }
   }, [isMobile]);
 
-  const leftImages = [render1, render6, render3, render8];
-  const rightImages = [render5, render2, render7, render4];
+  const leftImages = [render1, Product2, render3, Product3];
+  const rightImages = [GameAssest2, render2, GameAssest3, GameAssest4];
 
   return (
     <div className="flex flex-col lg:flex-row min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">

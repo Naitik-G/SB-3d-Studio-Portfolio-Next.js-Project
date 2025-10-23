@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Code, Video, Users, Grid3x3, Palette, TrendingUp, X, Volume2, VolumeX } from "lucide-react";
+import { Code, Video, Users, Grid3x3, Palette, X, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,11 +11,12 @@ import render3 from "@/app/assest/render3.jpg";
 import render4 from "@/app/assest/render4.jpg";
 import render5 from "@/app/assest/render5.jpg";
 import render6 from "@/app/assest/render6.jpg";
-import TeamMember1 from "@/app/assest/TeamMember1.jpg";
-import TeamMember2 from "@/app/assest/TeamMember2.jpg";
-import TeamMember3 from "@/app/assest/TeamMember3.jpg";
-import TeamMember4 from "@/app/assest/TeamMember4.jpg";
-import TeamMember5 from "@/app/assest/TeamMember5.jpg";
+import Product2 from "@/app/assest/Product2.jpg";
+import Product3 from "@/app/assest/Product3.jpg";
+import GameAssest2 from "@/app/assest/GameAssest2.jpg";
+import GameAssest3 from "@/app/assest/GameAssest3.jpg";
+import GameAssest4 from "@/app/assest/GameAssest4.jpg";
+import GameAssest6 from "@/app/assest/GameAssest6.jpg";
 
 export default function OurWork() {
   const [selectedService, setSelectedService] = useState(null);
@@ -23,14 +24,31 @@ export default function OurWork() {
   const videoRefs = useRef([]);
 
   const defaultImages = [render1, render2, render3, render4, render5, render6];
-  const teamImages = [TeamMember1, TeamMember2, TeamMember3, TeamMember4, TeamMember5, render1];
-  const motionVideos = [
-    "/motion1.mp4",
-    "/motion2.mp4",
-    "/motion3.mp4",
-    "/motion4.mp4",
-    "/motion5.mp4",
-    "/motion6.mp4"
+  const products = [
+     { src: "/Product1.mp4", type: "video" },
+    { src: Product2, type: "image" },
+    { src: Product3, type: "image" },
+    { src: GameAssest4, type: "image" },
+    { src: "/GameAssest1.mp4", type: "video" },
+    { src: GameAssest6, type: "image" },
+  ];
+  const gameAssests = [
+    { src: "/GameAssest1.mp4", type: "video" },
+    { src: GameAssest2, type: "image" },
+    { src: GameAssest3, type: "image" },
+    { src: GameAssest4, type: "image" },
+    { src: "/GameAssest1.mp4", type: "video" },
+    { src: GameAssest6, type: "image" },
+  ];
+  
+  // Mixed media array with type indicators
+  const motionMedia = [
+    { src: "/motion1.mp4", type: "video" },
+    { src: "/motion2.mp4", type: "video" },
+    { src: "/motion3.mp4", type: "video" },
+    { src: "/motion4.mp4", type: "video" },
+    { src: "/motion5.mp4", type: "video" },
+    { src: "/motion6.mp4", type: "video" },
   ];
 
   const services = [
@@ -38,51 +56,45 @@ export default function OurWork() {
       icon: <Code className="w-8 h-8" />,
       title: "Environment Design",
       description: "Immersive 3D environments and level-ready scenes with cinematic lighting and mood.",
-      images: defaultImages,
-      type: "image"
+      media: defaultImages.map(img => ({ src: img, type: "image" }))
     },
     {
       icon: <Video className="w-8 h-8" />,
       title: "3D Product Visualization",
       description: "High-quality product renders and animations for ads, packaging, and eCommerce.",
-      images: defaultImages,
-      type: "image"
+      media: products
     },
     {
       icon: <Grid3x3 className="w-8 h-8" />,
       title: "Game Props & Assets",
       description: "Optimized 3D props and assets crafted for game engines with perfect topology and PBR materials.",
-      images: teamImages,
-      type: "image"
+      media: gameAssests
     },
     {
       icon: <Video className="w-8 h-8" />,
       title: "3D Animation & Motion",
       description: "Bring your models to life with smooth, expressive animation and dynamic motion renders.",
-      images: motionVideos,
-      type: "video"
+      media: motionMedia // Mixed images and videos
     },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "Character & Creature Modeling",
-      description: "Stylized or realistic 3D characters, ready for animation and rigging.",
-      images: defaultImages,
-      type: "image"
-    },
-    {
-      icon: <Palette className="w-8 h-8" />,
-      title: "Texturing & LookDev",
-      description: "Physically accurate materials and stylized surfaces using Substance Painter and designer.",
-      images: defaultImages,
-      type: "image"
-    }
+    // {
+    //   icon: <Users className="w-8 h-8" />,
+    //   title: "Character & Creature Modeling",
+    //   description: "Stylized or realistic 3D characters, ready for animation and rigging.",
+    //   media: defaultImages.map(img => ({ src: img, type: "image" }))
+    // },
+    // {
+    //   icon: <Palette className="w-8 h-8" />,
+    //   title: "Texturing & LookDev",
+    //   description: "Physically accurate materials and stylized surfaces using Substance Painter and designer.",
+    //   media: defaultImages.map(img => ({ src: img, type: "image" }))
+    // }
   ];
 
   const handleVideoHover = (index, isHovering) => {
     const videoRef = videoRefs.current[index];
     if (videoRef) {
       if (isHovering) {
-        videoRef.play();
+        videoRef.play().catch(err => console.log('Play failed:', err));
       } else {
         videoRef.pause();
       }
@@ -196,30 +208,40 @@ export default function OurWork() {
 
               {/* Media Grid */}
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {selectedService.images.map((media, index) => {
+                {selectedService.media.map((mediaItem, index) => {
                   const isMuted = mutedVideos[index] !== false;
+                  const isVideo = mediaItem.type === "video";
                   
                   return (
                     <div
                       key={index}
                       className="relative aspect-square rounded-lg overflow-hidden bg-gray-800 hover:scale-105 transition-transform duration-300 group"
-                      onMouseEnter={() => selectedService.type === "video" && handleVideoHover(index, true)}
-                      onMouseLeave={() => selectedService.type === "video" && handleVideoHover(index, false)}
+                      onMouseEnter={() => isVideo && handleVideoHover(index, true)}
+                      onMouseLeave={() => isVideo && handleVideoHover(index, false)}
                     >
-                      {selectedService.type === "video" ? (
+                      {isVideo ? (
                         <>
+                          {/* Video Badge */}
+                          <div className="absolute top-3 left-3 z-10 bg-black/70 px-2 py-1 rounded-md">
+                            <Video className="w-4 h-4 text-green-400" />
+                          </div>
+
                           <video
                             ref={(el) => videoRefs.current[index] = el}
-                            src={media}
+                            src={mediaItem.src}
                             className="w-full h-full object-cover"
                             loop
                             muted={isMuted}
                             playsInline
                             preload="metadata"
-                            onError={(e) => console.error('Video error:', media, e)}
+                            onError={(e) => {
+                              console.error('Video error:', mediaItem.src);
+                              e.target.style.display = 'none';
+                            }}
                           >
                             Your browser does not support the video tag.
                           </video>
+
                           {/* Mute/Unmute Button */}
                           <button
                             onClick={(e) => {
@@ -234,18 +256,31 @@ export default function OurWork() {
                               <Volume2 className="w-4 h-4 text-green-400" />
                             )}
                           </button>
+
+                          {/* Play indicator overlay */}
+                         
                         </>
                       ) : (
                         <Image
-                          src={media}
+                          src={mediaItem.src}
                           alt={`${selectedService.title} - Image ${index + 1}`}
                           fill
                           className="object-cover"
+                          sizes="(max-width: 768px) 50vw, 33vw"
                         />
                       )}
                     </div>
                   );
                 })}
+              </div>
+
+              {/* Media Count Info */}
+              <div className="mt-6 flex justify-between items-center text-sm text-gray-400">
+                <span>
+                  {selectedService.media.filter(m => m.type === "image").length} Images, {" "}
+                  {selectedService.media.filter(m => m.type === "video").length} Videos
+                </span>
+                <span>Total: {selectedService.media.length} items</span>
               </div>
             </div>
           </div>
