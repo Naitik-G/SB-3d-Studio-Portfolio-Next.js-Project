@@ -57,7 +57,7 @@ export const metadata = {
     creator: '@motion_dev23733',
     title: 'MotionDev | Professional 3D Models & Product Renders',
     description: 'We create stunning 3D models, environments, and product renders for studios, brands, and agencies.',
-    images: ['z/Header.png'],
+    images: ['/Header.png'],
   },
   
   // Additional meta tags

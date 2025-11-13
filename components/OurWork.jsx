@@ -14,30 +14,31 @@ import render6 from "@/app/assest/render6.jpg";
 import Product2 from "@/app/assest/Product2.jpg";
 import Product3 from "@/app/assest/Product3.jpg";
 import GameAssest2 from "@/app/assest/GameAssest2.jpg";
-import GameAssest3 from "@/app/assest/GameAssest3.jpg";
 import GameAssest4 from "@/app/assest/GameAssest4.jpg";
 import GameAssest6 from "@/app/assest/GameAssest6.jpg";
+import GameAssest7 from "@/app/assest/GameAssest7.jpg";
+import GameAssest8 from "@/app/assest/GameAssest8.jpg";
 
 export default function OurWork() {
   const [selectedService, setSelectedService] = useState(null);
   const [mutedVideos, setMutedVideos] = useState({});
   const videoRefs = useRef([]);
 
-  const defaultImages = [render1, render2, render3, render4, render5, render6];
+  const defaultImages = [render1, render2, render3, render4, GameAssest6, render6];
   const products = [
-     { src: "/Product1.mp4", type: "video" },
+    { src: "/Product1.mp4", type: "video" },
     { src: Product2, type: "image" },
     { src: Product3, type: "image" },
     { src: GameAssest4, type: "image" },
     { src: "/GameAssest1.mp4", type: "video" },
-    { src: GameAssest6, type: "image" },
+    { src: "/Product6.mp4", type: "video" },
   ];
   const gameAssests = [
     { src: "/GameAssest1.mp4", type: "video" },
     { src: GameAssest2, type: "image" },
-    { src: GameAssest3, type: "image" },
+    { src: GameAssest7, type: "image" },
     { src: GameAssest4, type: "image" },
-    { src: "/GameAssest1.mp4", type: "video" },
+    { src: GameAssest8, type: "image" },
     { src: GameAssest6, type: "image" },
   ];
   
