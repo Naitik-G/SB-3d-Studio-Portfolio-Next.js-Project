@@ -10,6 +10,8 @@ import Product3 from "@/app/assest/Product3.jpg";
 import GameAssest2 from "@/app/assest/GameAssest2.jpg";
 import GameAssest3 from "@/app/assest/GameAssest3.jpg";
 import GameAssest4 from "@/app/assest/GameAssest4.jpg";
+import GameAssest7 from "@/app/assest/GameAssest7.jpg";
+import GameAssest8 from "@/app/assest/GameAssest8.jpg";
 
 
 import { Button } from "@/components/ui/button";
@@ -94,7 +96,7 @@ export default function AutoScrollGallery() {
   }, [isMobile]);
 
   const leftImages = [render1, Product2, render3, Product3];
-  const rightImages = [GameAssest2, render2, GameAssest3, GameAssest4];
+  const rightImages = [GameAssest2, render2, GameAssest7, GameAssest8];
 
   return (
     <div className="flex flex-col lg:flex-row min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
@@ -103,7 +105,7 @@ export default function AutoScrollGallery() {
         <div className="max-w-xl space-y-8">
           {/* Heading */}
           <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
-            Bring Your Ideas to{" "}
+            Bring Your Ideas to
             <span className="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
               Life in 3D
             </span>

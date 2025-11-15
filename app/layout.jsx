@@ -20,19 +20,45 @@ export const metadata = {
     template: '%s | MotionDev',
   },
   description: 'Professional 3D modeling, rendering, and visualization services',
+  
+  // Global Open Graph settings
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://www.motiondev.xyz',
+    siteName: 'MotionDev',
+    images: [
+      {
+        url: 'https://www.motiondev.xyz/Header.png', // ABSOLUTE URL
+        width: 1200,
+        height: 630,
+        alt: 'MotionDev - Professional 3D Studio',
+      },
+    ],
+  },
+  
+  // Global Twitter Card settings
+  twitter: {
+    card: 'summary_large_image',
+    site: '@motion_dev23733',
+    creator: '@motion_dev23733',
+    images: ['https://www.motiondev.xyz/Header.png'], // ABSOLUTE URL
+  },
+  
+  // Icons
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/logo.svg', sizes: 'any', type: 'image/svg+xml' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-         {/* Additional favicon links for better browser support */}
-        <link rel="icon" type="image/x-icon" href="/logo.svg" sizes="32x32" />
-        <link rel="icon" type="image/png" href="/logo.svg" sizes="16x16" />
-        <link rel="icon" type="image/png" href="/logo.svg" sizes="32x32" />
-        <link rel="icon" type="image/png" href="/logo.svg" sizes="48x48" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        
         {/* Schema.org structured data for Organization */}
         <script
           type="application/ld+json"
@@ -42,17 +68,20 @@ export default function RootLayout({ children }) {
               "@type": "Organization",
               "name": "MotionDev",
               "url": "https://www.motiondev.xyz",
-              "logo": "/logo.svg",
+              "logo": "https://www.motiondev.xyz/logo.svg",
+              "image": "https://www.motiondev.xyz/Header.png",
               "description": "Professional 3D modeling, rendering, and visualization services for studios, brands, and agencies.",
-              "image": "/Header.png",
+              "email": "devmotion007@gmail.com",
+              "telephone": "+91-9518535585",
               "sameAs": [
                 "https://www.instagram.com/motiondev_1",
-                "https://x.com/motion_dev23733",
-                "https://www.motiondev.xyz"
+                "https://x.com/motion_dev23733"
               ],
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "Customer Service",
+                "email": "devmotion007@gmail.com",
+                "telephone": "+91-9518535585",
                 "availableLanguage": ["English"]
               },
               "founder": {
@@ -83,18 +112,14 @@ export default function RootLayout({ children }) {
               "name": "MotionDev",
               "url": "https://www.motiondev.xyz",
               "description": "Professional 3D modeling, rendering, and visualization services",
+              "image": "https://www.motiondev.xyz/Header.png",
               "publisher": {
                 "@type": "Organization",
                 "name": "MotionDev",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "/logo.svg"
+                  "url": "https://www.motiondev.xyz/logo.svg"
                 }
-              },
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://www.motiondev.xyz/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
               }
             })
           }}

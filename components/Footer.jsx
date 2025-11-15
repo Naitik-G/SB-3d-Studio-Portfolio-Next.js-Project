@@ -38,7 +38,7 @@ export default function Footer() {
 
             {/* Description */}
             <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
-              Luma is a powerful Membership Template to Sell your Courses and Membership Content.
+              Motiondev we create motion for advertisement and games.
             </p>
 
             {/* Social Icons */}

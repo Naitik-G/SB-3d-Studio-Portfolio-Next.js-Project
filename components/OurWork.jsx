@@ -9,7 +9,6 @@ import render1 from "@/app/assest/render1.jpg";
 import render2 from "@/app/assest/render2.jpg";
 import render3 from "@/app/assest/render3.jpg";
 import render4 from "@/app/assest/render4.jpg";
-import render5 from "@/app/assest/render5.jpg";
 import render6 from "@/app/assest/render6.jpg";
 import Product2 from "@/app/assest/Product2.jpg";
 import Product3 from "@/app/assest/Product3.jpg";
@@ -30,7 +29,7 @@ export default function OurWork() {
     { src: Product2, type: "image" },
     { src: Product3, type: "image" },
     { src: GameAssest4, type: "image" },
-    { src: "/GameAssest1.mp4", type: "video" },
+    { src: "/Product7.mp4", type: "video" },
     { src: "/Product6.mp4", type: "video" },
   ];
   const gameAssests = [

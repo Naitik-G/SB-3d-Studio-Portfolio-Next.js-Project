@@ -31,7 +31,7 @@ export const metadata = {
   creator: 'MotionDev',
   publisher: 'MotionDev',
   
-  // Open Graph
+  // Open Graph - FIXED WITH ABSOLUTE URLS
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -41,7 +41,7 @@ export const metadata = {
     siteName: 'MotionDev',
     images: [
       {
-        url: '/Header.png',
+        url: 'https://www.motiondev.xyz/Header.png', // ABSOLUTE URL
         width: 1200,
         height: 630,
         alt: 'MotionDev - Professional 3D Studio Portfolio',
@@ -50,14 +50,14 @@ export const metadata = {
     ],
   },
   
-  // Twitter Card
+  // Twitter Card - FIXED WITH ABSOLUTE URL
   twitter: {
     card: 'summary_large_image',
     site: '@motion_dev23733',
     creator: '@motion_dev23733',
     title: 'MotionDev | Professional 3D Models & Product Renders',
     description: 'We create stunning 3D models, environments, and product renders for studios, brands, and agencies.',
-    images: ['/Header.png'],
+    images: ['https://www.motiondev.xyz/Header.png'], // ABSOLUTE URL
   },
   
   // Additional meta tags
@@ -75,8 +75,11 @@ export const metadata = {
   
   // Icons
   icons: {
-    icon: '/logo.svg',
-    shortcut: '/favicon-16x16.png',
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
     apple: '/apple-touch-icon.png',
   },
   
@@ -95,9 +98,9 @@ export const metadata = {
   applicationName: 'MotionDev',
   referrer: 'origin-when-cross-origin',
   formatDetection: {
-    email: "devmotion007@gmail.com",
+    email: false,
     address: false,
-    telephone: "+91 9518535585",
+    telephone: false,
   },
 }
 
