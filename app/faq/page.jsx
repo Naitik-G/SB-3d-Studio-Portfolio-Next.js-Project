@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import FAQPageContent from './FAQPageContent';
 
 export const metadata = {
