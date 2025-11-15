@@ -132,11 +132,11 @@ export default function OurWork() {
                 </p>
 
                 {/* CTA Button */}
-                <Link href="/category">
-                  <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-6 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50">
+                
+                  <di className="bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-6 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-green-500/50">
                     Browse All Categories →
-                  </Button>
-                </Link>
+                  </di>
+
               </div>
             </div>
 
@@ -162,6 +162,9 @@ export default function OurWork() {
                     {/* Description */}
                     <p className="text-gray-400 text-sm leading-relaxed">
                       {service.description}
+                    </p>
+                    <p className="text-green-500 text-sm leading-relaxed">
+                      click here
                     </p>
                   </div>
                 ))}
@@ -203,6 +206,9 @@ export default function OurWork() {
                   <p className="text-gray-400 mt-1">
                     {selectedService.description}
                   </p>
+                  <p className="text-green-500 text-sm leading-relaxed">
+                      click here
+                    </p>
                 </div>
               </div>
 
